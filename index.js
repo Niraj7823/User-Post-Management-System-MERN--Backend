@@ -3,7 +3,6 @@ import connectDB from "./src/config/database.js";
 import app from "./src/app.js";
 
 dotenv.config();
-
 const startServer = async () => {
   try {
     await connectDB();
@@ -11,7 +10,9 @@ const startServer = async () => {
       console.log("ERROR", error);
       throw error;
     });
-
+    app.get("/", (req, res) => {
+      res.send("API running");
+    });
     app.listen(process.env.PORT || 8000, () => {
       console.log(`Server is running :${process.env.PORT}`);
     });
@@ -20,3 +21,4 @@ const startServer = async () => {
   }
 };
 startServer();
+export default app;
