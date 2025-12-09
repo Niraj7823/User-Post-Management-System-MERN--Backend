@@ -10,7 +10,7 @@ const startServer = async () => {
       console.log("ERROR", error);
       throw error;
     });
-    app.get("/", (req, res) => {
+    app.get(process.env.PORT, (req, res) => {
       res.send("API running");
     });
     app.listen(process.env.PORT || 8000, () => {
